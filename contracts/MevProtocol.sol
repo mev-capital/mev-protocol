@@ -12,7 +12,7 @@ import './interfaces/IStrategy.sol';
  *
  * @title MevProtocol Protocol
  *
- * @notice Contract for Convex&Curve protocols optimize.
+ * @notice Contract for Curve&Convex&Frax&Uniswap protocols optimize.
  * Users can use this contract for optimize yield and gas.
  *
  *
@@ -121,7 +121,7 @@ contract MevProtocol is ERC20, Pausable, AccessControl {
         _;
     }
 
-    constructor(address[POOL_ASSETS] memory _tokens) ERC20('MevProtocolLP', 'ZLP') {
+    constructor(address[POOL_ASSETS] memory _tokens) ERC20('MevProtocolLP', 'MPLP') {
         tokens = _tokens;
         _setupRole(DEFAULT_ADMIN_ROLE, msg.sender);
         _setupRole(OPERATOR_ROLE, msg.sender);
@@ -234,7 +234,7 @@ contract MevProtocol is ERC20, Pausable, AccessControl {
 
     /**
      * @dev Returns price depends on the income of users
-     * @return Returns currently price of ZLP (1e18 = 1$)
+     * @return Returns currently price of MPLP (1e18 = 1$)
      */
     function lpPrice() public view returns (uint256) {
         return calcTokenPrice(totalHoldings(), totalSupply());
@@ -374,7 +374,7 @@ contract MevProtocol is ERC20, Pausable, AccessControl {
     /**
      * @dev in this func user sends pending withdraw to the contract and then waits
      * for the completion of the transaction for all users
-     * @param  lpShares - amount of ZLP for withdraw
+     * @param  lpShares - amount of MPLP for withdraw
      * @param tokenAmounts - array of amounts stablecoins that user want minimum receive
      */
     function delegateWithdrawal(
@@ -400,7 +400,7 @@ contract MevProtocol is ERC20, Pausable, AccessControl {
 
     /**
      * @dev withdraw in one tx, without waiting complete by dev
-     * @param lpShares - amount of ZLP for withdraw
+     * @param lpShares - amount of MPLP for withdraw
      * @param tokenAmounts -  array of amounts stablecoins that user want minimum receive
      */
     function withdraw(
