@@ -5,7 +5,7 @@ const globalConfig = require("../config.json");
 async function main() {
   console.log("Start deploy");
   const MevProtocol = await ethers.getContractFactory("MevProtocol");
-  const mevProtocol = await MevProtocol.deploy(globalConfig.tokens);
+  const mevProtocol = await MevProtocol.deploy(globalConfig.tokens_goerli);
 
   await mevProtocol.deployed();
   console.log("Mev Protocole deployed to:", mevProtocol.address);

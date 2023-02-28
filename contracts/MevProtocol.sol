@@ -12,7 +12,7 @@ import './interfaces/IStrategy.sol';
  *
  * @title MevProtocol Protocol
  *
- * @notice Contract for Curve&Convex&Frax&Uniswap protocols optimize.
+ * @notice Contract for Curve & Convex & Frax & Uniswap protocols optimize.
  * Users can use this contract for optimize yield and gas.
  *
  *
